@@ -24,5 +24,5 @@ The parent chooses which child these vaccines were for, and the details of the v
 - Date vaccine given
 
 ## Slack Channel
-This is the slack channel for those who would like to communicate and collaborate with team members via **Slack**.
+This is the Slack channel for those who would like to communicate and collaborate with team members via **Slack**.
 Once you have joined the **Slack Team** [EmpowerHack_LDN] (http://slack.empowerhack.io), the channel for VaccinePass is `healthldn_vaccinepass`.
