@@ -21,7 +21,7 @@ angular.module('vpApp.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('PassesCtrl', function ($scope, VaccinePassStorage) {
+.controller('PassesCtrl', function ($scope, $state, VaccinePassStorage) {
     $scope.things = VaccinePassStorage.getAll();
     $scope.add = function (newThing) {
         VaccinePassStorage.add(newThing);
@@ -29,6 +29,14 @@ angular.module('vpApp.controllers', [])
     $scope.remove = function (thing) {
         VaccinePassStorage.remove(thing);
     };
+    $scope.goToNewPage = function () {
+        console.log('New');
+        $state.go('tab.passes-add');
+    }
+})
+
+.controller('PassesAddCtrl', function ($scope) {
+    console.log('PassesAddCtrl Started');
 })
 
 .controller('AccountCtrl', function($scope) {

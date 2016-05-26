@@ -51,11 +51,7 @@ angular.module('vpApp.services', [])
 
 .factory('VaccinePassStorage', function ($localStorage) {
     $localStorage = $localStorage.$default({
-        things: [{
-            id: 0,
-            name: 'Ben Dover',
-            lastText: 'You on your way?'
-        }]
+        things: []
     });
 
     var _getAll = function () {

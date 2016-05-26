@@ -10,8 +10,14 @@
             </button>
         </div>
     </div>-->
-    
+    <a class="button button-full button-calm" href="#/tab/passes/new">
+        <i class="ion-ios-plus-outline"></i> Add Vaccination
+    </a>
     <ion-list show-delete="false" can-swipe="true">
+        <ion-item class="item-remove-animate item-icon-right" href="#/tab/passes/new">
+            <h2>Add Vaccination</h2>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
         <ion-item ng-repeat="thing in things track by $index">
             {{thing}}
             <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(thing)"></ion-option-button>
@@ -19,3 +25,4 @@
     </ion-list>
   </ion-content>
 </ion-view>
+

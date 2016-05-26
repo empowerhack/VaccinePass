@@ -77,8 +77,8 @@ angular.module('vpApp', ['ionic','ngStorage', 'vpApp.controllers', 'vpApp.servic
             }
         }
     })
-    .state('tab.passes-add', {
-        url: '/passes/add',
+    .state('tab.new.pass', {
+        url: '/passes/new',
         views: {
             'tab-passes-add': {
                 templateUrl: 'templates/tab-passes-add.html',
