@@ -1,0 +1,21 @@
+<ion-view view-title="Passes">
+  <ion-content>
+    <!--<div class="list">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="anything to save" ng-model="newThing">
+            </label>
+            <button class="button button-clear button-positive icon" ng-click="add(newThing)">
+                <i class="ion-ios-plus-outline"></i> Add
+            </button>
+        </div>
+    </div>-->
+    
+    <ion-list show-delete="false" can-swipe="true">
+        <ion-item ng-repeat="thing in things track by $index">
+            {{thing}}
+            <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(thing)"></ion-option-button>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
