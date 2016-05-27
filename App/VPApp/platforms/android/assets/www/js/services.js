@@ -51,23 +51,28 @@ angular.module('vpApp.services', [])
 
 .factory('VaccinePassStorage', function ($localStorage) {
     $localStorage = $localStorage.$default({
-        things: []
+        passes: []
     });
 
     var _getAll = function () {
-        return $localStorage.things;
+        return $localStorage.passes;
     };
 
     var _add = function (thing) {
-        $localStorage.things.push(thing);
-    }
+        $localStorage.passes.push(thing);
+    };
+
+    var _get = function (id) {
+        return $localStorage.passes[id];
+    };
 
     var _remove = function (thing) {
-        $localStorage.things.splice($localStorage.things.indexOf(thing), 1);
-    }
+        $localStorage.passes.splice($localStorage.passes.indexOf(thing), 1);
+    };
 
     return {
         getAll: _getAll,
+        get: _get,
         add: _add,
         remove: _remove
     };

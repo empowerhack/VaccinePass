@@ -77,12 +77,21 @@ angular.module('vpApp', ['ionic','ngStorage', 'vpApp.controllers', 'vpApp.servic
             }
         }
     })
-    .state('tab.new.pass', {
-        url: '/passes/new',
+    .state('tab.pass-add-user', {
+        url: '/passes/new/user',
         views: {
-            'tab-passes-add': {
-                templateUrl: 'templates/tab-passes-add.html',
-                controller: 'PassesAddCtrl'
+            'tab-passes': {
+                templateUrl: 'templates/pass-add-user.html',
+                controller: 'PassAddUserCtrl'
+            }
+        }
+    })
+    .state('tab.pass-add-vaccination', {
+        url: '/passes/:passId/new/vaccination',
+        views: {
+            'tab-passes': {
+                templateUrl: 'templates/pass-add-vaccination.html',
+                controller: 'PassAddVaccinationCtrl'
             }
         }
     })

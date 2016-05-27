@@ -1,0 +1,32 @@
+﻿<ion-view view-title="Add New Pass">
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">First Name</span>
+                <input type="text" ng-model="newUser.firstName" placeholder="First Name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Last Name</span>
+                <input type="text" ng-model="newUser.lastName" placeholder="Last Name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Date of Birth</span>
+                <input type="date" ng-model="newUser.dob">
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">Relation to You</span>
+                <select ng-model="newUser.relation">
+                    <option>Spouse</option>
+                    <option selected>Son</option>
+                    <option>Daughter</option>
+                    <option>Self</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Notes</span>
+                <textarea ng-model="newUser.notes"></textarea>
+            </label>
+            <button class="button button-full button-positive" ng-click="createPass(newUser)">Create</button>
+        </div>
+    </ion-content>
+</ion-view>

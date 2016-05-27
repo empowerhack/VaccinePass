@@ -22,21 +22,31 @@ angular.module('vpApp.controllers', [])
 })
 
 .controller('PassesCtrl', function ($scope, $state, VaccinePassStorage) {
-    $scope.things = VaccinePassStorage.getAll();
-    $scope.add = function (newThing) {
-        VaccinePassStorage.add(newThing);
+    $scope.passes = VaccinePassStorage.getAll();
+    $scope.add = function (pass) {
+        VaccinePassStorage.add(pass);
     };
-    $scope.remove = function (thing) {
-        VaccinePassStorage.remove(thing);
+    $scope.remove = function (pass) {
+        VaccinePassStorage.remove(pass);
     };
-    $scope.goToNewPage = function () {
-        console.log('New');
-        $state.go('tab.passes-add');
+    $scope.goToAddUserPage = function () {
+        $state.go('tab.pass-add-user');
+    }
+    $scope.goToAddVaccinationPage = function (id) {
+        $state.go('tab.pass-add-vaccination', { passId: id });
     }
 })
 
-.controller('PassesAddCtrl', function ($scope) {
-    console.log('PassesAddCtrl Started');
+.controller('PassAddUserCtrl', function ($scope, $state, $stateParams, VaccinePassStorage) {
+    $scope.createPass = function (user) {
+        VaccinePassStorage.add(user);
+        $state.go('tab.passes');
+    };
+})
+
+.controller('PassAddVaccinationCtrl', function ($scope, $stateParams, VaccinePassStorage) {
+    $scope.pass = VaccinePassStorage.get($stateParams.passId);
+    console.log($stateParams.passId);
 })
 
 .controller('AccountCtrl', function($scope) {

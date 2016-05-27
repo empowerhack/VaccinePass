@@ -21,6 +21,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
     "dependent_plugins": {}
