@@ -1,7 +1,7 @@
 ﻿<ion-view view-title="Add Vaccination for {{ pass.firstName }} {{ pass.lastName }}">
     <ion-content class="padding">
         <div class="list">
-            <label class="item item-input">
+            <label class="item item-input item-select">
                 <span class="input-label">Vaccine</span>
                 <select ng-model="newVaccine.vaccine" ng-options="vac.name for vac in vaccines" required></select>
             </label>
