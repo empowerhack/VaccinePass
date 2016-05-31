@@ -1,24 +1,11 @@
 angular.module('vpApp.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('DashCtrl', function ($scope) {
+    $scope.outbreaks = [
+        { name: "Lassa Fever", location: "Nigeria", reportedDate: "27-05-2016" },
+        { name: "Lassa Fever", location: "Liberia", reportedDate: "18-05-2016" },
+        { name: "Middle East respiratory syndrome coronavirus (MERS-CoV) ", location: "Saudia Arabia", reportedDate: "16-05-2016" },
+    ];
 })
 
 .controller('PassesCtrl', function ($scope, $state, VaccinePassStorage) {
@@ -31,26 +18,55 @@ angular.module('vpApp.controllers', [])
     };
     $scope.goToAddUserPage = function () {
         $state.go('tab.pass-add-user');
-    }
-    $scope.goToAddVaccinationPage = function (id) {
-        $state.go('tab.pass-add-vaccination', { passId: id });
-    }
+    };
+    $scope.goToViewUserPage = function (id) {
+        $state.go('tab.pass-view-user', { passId: id });
+    };
 })
 
 .controller('PassAddUserCtrl', function ($scope, $state, $stateParams, VaccinePassStorage) {
+    var _uid = function () { return Math.floor((Math.random() * 1024) + 1) + new Date().getTime(); };
     $scope.createPass = function (user) {
+        user.uid = _uid();
+        user.vaccinations = [];
         VaccinePassStorage.add(user);
         $state.go('tab.passes');
     };
 })
 
-.controller('PassAddVaccinationCtrl', function ($scope, $stateParams, VaccinePassStorage) {
+.controller('PassViewUserCtrl', function ($scope, $state, $stateParams, VaccinePassStorage) {
     $scope.pass = VaccinePassStorage.get($stateParams.passId);
-    console.log($stateParams.passId);
+    $scope.goToAddVaccinationPage = function (id) {
+        $state.go('tab.pass-add-vaccine', { passId: id });
+    };
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('PassAddVaccineCtrl', function ($scope, $state, $stateParams, VaccinePassStorage, $filter) {
+    $scope.vaccines = [
+        { name: "Hepatitis A" },
+        { name: "Hepatitis B" },
+        { name: "Meningococcal" },
+        { name: "Diptheria, Tetanus, Pertussis" },
+        { name: "Human papillomavirus" },
+        { name: "Zoster" },
+        { name: "Influenza" },
+        { name: "Haemophilus influenza type b" },
+        { name: "Pneumococcal" },
+        { name: "Polio" },
+        { name: "Rotavirus" },
+        { name: "Measles, Mumps, Rubella" },
+        { name: "Varicella" },
+        { name: "Other" }
+    ];
+    $scope.pass = VaccinePassStorage.get($stateParams.passId);
+    $scope.save = function (vaccination, uid) {
+        var _uid = function () { return Math.floor((Math.random() * 128) + 1) + new Date().getTime(); };
+        vaccination.uid = _uid();
+        VaccinePassStorage.addVaccination(vaccination, uid);
+        $state.go('tab.pass-view-user', { passId: uid });
+    };
+})
+
+.controller('InfoCtrl', function ($scope) {
+    //
 });

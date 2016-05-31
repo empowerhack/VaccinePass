@@ -1,7 +1,13 @@
 ﻿<ion-view view-title="Add New Vaccination">
     <ion-content class="padding">
         <p>
-            Hello Darkness ({{ pass.firstName }}), my old friend
+            You are viewing vaccinations for {{ pass.firstName }} {{ pass.lastName }} 
+            <br />
+            {{ pass.relation }}
+            <br />
+            {{ pass.dob }}
+            <br />
+            {{ pass.notes }}
         </p>
     </ion-content>
 </ion-view>

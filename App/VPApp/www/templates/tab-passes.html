@@ -1,22 +1,12 @@
 <ion-view view-title="Passes">
   <ion-content>
-    <!--<div class="list">
-        <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-                <input type="text" placeholder="anything to save" ng-model="newThing">
-            </label>
-            <button class="button button-clear button-positive icon" ng-click="add(newThing)">
-                <i class="ion-ios-plus-outline"></i> Add
-            </button>
-        </div>
-    </div>-->
     <a class="button button-full button-calm" ng-click="goToAddUserPage()">
         <i class="ion-ios-plus-outline"></i> Add New Pass
     </a>
     <ion-list show-delete="false" can-swipe="true">
         <ion-item ng-repeat="pass in passes track by $index">
-            {{pass.firstName}}
-            <ion-option-button class="button-balanced ion-compose" ng-click="goToAddVaccinationPage($index)"></ion-option-button>
+            {{pass.firstName}} {{pass.lastName}}
+            <ion-option-button class="button-balanced ion-clipboard" ng-click="goToViewUserPage(pass.uid)"></ion-option-button>
             <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(pass)"></ion-option-button>
         </ion-item>
     </ion-list>
