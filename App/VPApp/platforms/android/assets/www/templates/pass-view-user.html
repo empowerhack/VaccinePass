@@ -23,8 +23,8 @@
                 <h3 ng-show="vaccination.nextDose">
                     <small>Next Dose:</small> {{ vaccination.nextDose | date: shortDate }}
                 </h3>
-                <ion-option-button class="button-balanced ion-edit" ng-click="goToViewUserPage(pass.uid)"> Edit</ion-option-button>
-                <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(pass)"> Remove</ion-option-button>
+                <ion-option-button class="button-balanced ion-edit" ng-click="showAlert()"> Edit</ion-option-button>
+                <ion-option-button class="button-assertive ion-trash-b" ng-click="showAlert()"> Remove</ion-option-button>
             </ion-item>
         </ion-list>
         

@@ -34,10 +34,16 @@ angular.module('vpApp.controllers', [])
     };
 })
 
-.controller('PassViewUserCtrl', function ($scope, $state, $stateParams, VaccinePassStorage) {
+.controller('PassViewUserCtrl', function ($scope, $ionicPopup, $state, $stateParams, VaccinePassStorage) {
     $scope.pass = VaccinePassStorage.get($stateParams.passId);
     $scope.goToAddVaccinationPage = function (id) {
         $state.go('tab.pass-add-vaccine', { passId: id });
+    };
+    $scope.showAlert = function () {
+        var alertPopup = $ionicPopup.alert({
+            title: 'I\'m sorry!',
+            template: 'That functionality isn\'t built yet. :( '
+        });
     };
 })
 
