@@ -1,0 +1,22 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <h2>Vaccine Pass</h2>
+    <p ng-hide="outbreaks">
+        There are currently no major health outbreaks
+    </p>
+    <div ng-show="outbreaks">
+        <h3>Current Outbreaks</h3>
+        <div class="card" ng-repeat="outbreak in outbreaks | orderBy: 'outbreak.date' ">
+            <div class="item item-text-wrap item-divider">
+                {{outbreak.name}}
+            </div>
+            <div class="item">
+                <div class="row">
+                    <div class="col">{{outbreak.location}}</div>
+                    <div class="col">{{outbreak.reportedDate}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

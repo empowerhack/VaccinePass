@@ -1,0 +1,32 @@
+﻿<ion-view view-title="{{ pass.firstName }} {{ pass.lastName }}">
+    <ion-content class="padding">
+        <a class="button button-full button-calm" ng-click="goToAddVaccinationPage(pass.uid)">
+            <i class="ion-ios-plus-outline"></i> Add New Vaccination
+        </a>
+        <p>
+            You are viewing vaccinations for your {{ pass.relation | lowercase }}, {{ pass.firstName }} {{ pass.lastName }}.
+            <br />
+            <strong>Date of Birth:</strong> {{ pass.dob | date: shortDate }}
+            <span ng-show="pass.notes"><br /><strong>Notes:</strong> {{ pass.notes }}</span>
+        </p>
+        <ion-list show-delete="false" can-swipe="true">
+            <ion-item ng-repeat="vaccination in pass.vaccinations track by $index">
+                <h2>{{vaccination.vaccine.name}}</h2>
+                <dl>
+                    <dt>Type</dt>
+                    <dd>{{vaccination.type}}</dd>
+                    <dt>Date Given</dt>
+                    <dd>{{vaccination.dateGiven | date: shortDate }}</dd>
+                    <dt>Administered By</dt>
+                    <dd>{{vaccination.administeredBy}}</dd>
+                </dl>
+                <h3 ng-show="vaccination.nextDose">
+                    <small>Next Dose:</small> {{ vaccination.nextDose | date: shortDate }}
+                </h3>
+                <ion-option-button class="button-balanced ion-edit" ng-click="showAlert()"> Edit</ion-option-button>
+                <ion-option-button class="button-assertive ion-trash-b" ng-click="showAlert()"> Remove</ion-option-button>
+            </ion-item>
+        </ion-list>
+        
+    </ion-content>
+</ion-view>
